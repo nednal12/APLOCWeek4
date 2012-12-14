@@ -85,6 +85,34 @@
         
     }
 
+//-------------------------------  btnDeveloper  ------------------------------------------
+    
+    btnDeveloper = [UIButton buttonWithType:UIButtonTypeInfoLight];
+    
+    if (btnDeveloper != nil)
+    {
+        
+        btnDeveloper.tag = 2;
+        btnDeveloper.Frame = CGRectMake(10.0f, 360.0f, 30.0f, 30.0f);
+        [btnDeveloper addTarget:self action:@selector(onClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:btnDeveloper];
+        
+    }
+
+//-------------------------------  lblDeveloper  ------------------------------------------
+    
+    lblDeveloper = [[UILabel alloc] initWithFrame: CGRectMake(0.0f, 400.0f, 320.0f, 60.0f)];
+    
+    if (lblStatMsg != nil)
+    {
+        
+        lblDeveloper.text = @"This application was writtern by Brent Marohnic.";
+        lblDeveloper.backgroundColor = [UIColor lightGrayColor];
+        lblDeveloper.numberOfLines = 2;
+        
+        
+    }
+    
     
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
@@ -116,25 +144,30 @@
             
         case 1:
         {
-            NSDate *date = [NSDate date];
+            date = [NSDate date];
             
-            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+            dateFormatter = [[NSDateFormatter alloc] init];
             
             if (date != nil)
             {
-                [dateFormatter setDateStyle:NSDateFormatterFullStyle];
+                [dateFormatter setDateStyle:NSDateFormatterLongStyle];
                 [dateFormatter setTimeStyle:NSDateFormatterFullStyle];
                 
-                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Date" message: [dateFormatter stringFromDate:date] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+                NSString *dateString = [[NSString alloc] initWithString:[dateFormatter stringFromDate:date]];
+                
+                UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Date" message: [NSString stringWithFormat:@"%@", dateString] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
                 
                 [alertView show];
                 
             }
             
-            
+            break;
             
         }
         default:
+        {
+            [self.view addSubview:lblDeveloper];
+        }
             break;
     }
 }

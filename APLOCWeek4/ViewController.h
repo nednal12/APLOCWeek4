@@ -15,6 +15,10 @@
     UIButton *btnUserName;
     UILabel *lblStatMsg;
     UIButton *btnShowDate;
+    NSDateFormatter *dateFormatter;
+    NSDate *date;
+    UIButton *btnDeveloper;
+    UILabel *lblDeveloper;
 }
 
 -(void)onClick:(id)whichOne;
